@@ -1,0 +1,687 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="static/assets/css/style-figma-1.css" rel="stylesheet">
+<script type ="text/javascript">
+function toggleText2(){
+                var myText=document.getElementById("info2");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText3(){
+                var myText=document.getElementById("info3");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText4(){
+                var myText=document.getElementById("info4");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText5(){
+                var myText=document.getElementById("info5");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText6(){
+                var myText=document.getElementById("info6");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText7(){
+                var myText=document.getElementById("info7");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function toggleText8(){
+                var myText=document.getElementById("info8");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+
+function rejectClick(){
+    var value = 0
+    window.location.href = "{% url 'status' %}" + "?search="+value;
+    console.log('Rejected')
+}
+
+function approveClick(){
+    var value = 1
+    window.location.href = "{% url 'status' %}" + "?search="+value;
+    console.log('Approved')
+}
+
+</script>
+<div class="alt-nav" style="width:100%;">
+    <div style="position: absolute;
+    height: 26px;
+    left: 11.39%;
+    right: 38.75%;
+    top: 30%;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+        <a href="#"><button  onclick="rejectClick()" style="margin-top: 5px;" class="gdpr-button1">Reject</button></a>
+        <a href="#"><button  onclick="approveClick()" style="margin-top: 5px;" class="gdpr-button2">Approve</button></a>
+        GDPR Report
+    </div>
+</div>
+
+<body class="body-class">
+    <div class="gdpr_report_box" style="min-height:970px; overflow-y: scroll; overflow-x: hidden; width: 970px;">
+        <div style="position:absolute; left:5%; padding-right: 5%;">
+            <form method="POST" action="gdpr_report" name="gdpr_form">
+                                   <div class="sticky-top" style="height: 40px; top:30px; left:0px; right:0px; overflow:hidden;">
+                                        <button class="proceed-btn-save" type="submit" style="margin-top: 10px; position: static; float: right; margin-left: 70px;">Save</button>
+                                    </div>
+                <div class="form-group">
+                    <div style="font-size: 16px; margin-top: 30px;">
+                        <p class="small_font" style="color: black; text-transform: uppercase ;">Save the form before proceed&nbsp;<img style="height: 9px; margin-bottom: 3px;" src="static/assets/img/warning.png"/></p>
+                        <p style="font-size:14px; font-family: 'Ubuntu'">1. Explain broadly what project aims to achieve and what type of processing it involves. You may find it helpful to refer or link to other documents, such as a project proposal. Summarise why you identified the need for a DPIA.</p>
+                    </div>
+                            <div style="margin-top:30px;">
+                                <textarea rows="2" cols="50" name="text_box_1" class="gdpr_text_box_1_1" style=" overflow-y: scroll; max-height: 250px; min-height: 250px;">{{f1_final_text}}
+                                </textarea>
+                            </div>
+                </div>
+                <br>
+
+    <!--            Step 1 Box-->
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText2()" style="display: none;" id="info-btn1"></button>
+                    <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn1').click()" alt="Info"></a>
+                </div>
+
+                  <div class="form-group" id="Asset3">
+                      <div class="col">
+                            <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">2. Describe the nature and scope of the processing, and the context and scope of the processing</p>
+                            </div>
+                          <div class="font info" style= "display:none; margin-top: 10px;" id="info2">
+                                <div>
+                                    <p style="color: black; font-size: 12px; margin-top: 30px; font-weight: bold;">Nature of processing</p>
+                                    <div  class="gdpr_text_box_1_1" style=" border: groove; text-align left; overflow-y: scroll; max-height: 250px; min-height: 250px; margin-top:-10px;">
+                                       <table class="table table-bordered" style="border-color: black; margin-bottom: 60px;">
+                                          <tbody>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">How will you collect, use, store and
+                                                    delete data?</label></th>
+                                                <td><textarea name="form2_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%; resize: none;"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">What is the source of the data? Will you be sharing data with anyone?</label></th>
+                                              <td><input name="form2_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">You might find it useful to refer to a flow diagram or other way of describing data
+                                                flows. What types of processing identified as likely high risk are involved?</label></th>
+                                              <td><input name="form2_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="color: black; font-size: 12px; margin-top: 30px; font-weight: bold;">Scope of processing</p>
+                                    <div  class="gdpr_text_box_1_1" style=" border: groove; text-align left; overflow-y: scroll; max-height: 250px; min-height: 250px; margin-top:-10px;">
+                                        <table class="table table-bordered" style="border-color: black; margin-bottom: 60px;">
+                                          <tbody>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">what is the nature of the data, and does
+                                                it include special category or criminal offence data?</label></th>
+                                                <td><textarea name="form2_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%; resize: none;"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">How much data will you be
+                                                collecting and using? How often?</label></th>
+                                              <td><input name="form2_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">How long will you keep it? How many individuals
+                                                    are affected? What geographical area does it cover?</label></th>
+                                              <td><input name="form2_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="color: black; font-size: 12px; margin-top: 30px; font-weight: bold;">Context of processing</p>
+                                    <div  class="gdpr_text_box_1_1" style=" border: groove; text-align left; overflow-y: scroll; max-height: 250px; min-height: 250px; margin-top:-10px;">
+                                        <table class="table table-bordered" style="border-color: black; margin-bottom: 60px;">
+                                          <tbody>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">what is the nature of your relationship
+                                                    with the individuals? How much control will they have?</label></th>
+                                                <td><textarea name="form2_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%; resize: none;"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Would they expect you to
+use their data in this way?</label></th>
+                                              <td><input name="form2_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Do they include children or other vulnerable groups?</label></th>
+                                              <td><input name="form2_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Are
+there prior concerns over this type of processing or security flaws?</label></th>
+                                              <td><input name="form2_f3_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Is it novel in any
+way? What is the current state of technology in this area?</label></th>
+                                              <td><input name="form2_f3_5" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Are there any current
+issues of public concern that you should factor in?</label></th>
+                                              <td><input name="form2_f3_6" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          <tr>
+                                                <th scope="row" style="width: 50%"><label style="margin-top: 20xp; font-weight: 500; font-size: 12px; border:0; outline:0;">Are you signed up to any
+approved code of conduct or certification scheme (once any have been approved)?</label></th>
+                                              <td><input name="form2_f3_7" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 35px; width:100%"></td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="color: black; font-size: 12px; margin-top: 30px; font-weight: bold;">Purpose of processing</p>
+                                    <textarea name="text_box_2_4"  class="gdpr_text_box_1_1" style=" border: groove; text-align left; overflow-y: scroll; max-height: 250px; min-height: 250px; margin-top:-10px;">Scope of the project: {{scope}}
+                                    </textarea>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                <br>
+                    <div style="position:absolute; left:95%; padding-right: 5%; margin-top:30px;">
+                        <button type="button" onclick="toggleText3()" style="display: none;" id="info-btn3"></button>
+                        <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn3').click()" alt="Info"></a>
+                        <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                    </div>
+                <hr>
+                  <div class="form-group" id="Asset7" >
+                      <div class="col">
+                          <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">3. Consider how to consult with relevant stakeholders</p>
+                            </div>
+                          <div class="font info" style= "display:none; padding-top: 5px;" id="info3">
+                                <div style="margin-top:30px;">
+                                    <textarea rows="5" cols="10" name="text_box_3"  class="gdpr_text_box_1_1" style="text-align left: groove; overflow-y: scroll; max-height: 450px; min-height: 450px;">Name of the consultants are: {{f3_final_text}}
+                                    </textarea>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                <br>
+                <hr>
+
+    <!--                 Step 4 Box-->
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText4()" style="display: none;" id="info-btn4"></button>
+                    <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn4').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                </div>
+
+                  <div class="form-group" id="Asset4">
+                      <div class="col">
+                            <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">4. Describe compliance and proportionality measures, in particular</p>
+                            </div>
+                          <div class="font info" style= "display:none; padding-top: 10px;" id="info4">
+                                <div style="margin-top:30px;">
+                                    <textarea name="text_box_4"  class="gdpr_text_box_1_1" style="text-align left: groove; overflow-y: scroll; max-height: 250px; min-height: 250px;"> {{f4_final_text}}
+                                    </textarea>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                <hr style="margin-top:50px">
+    <!--        End of Box 4-->
+
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText5()" style="display: none;" id="info-btn5"></button>
+                    <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn5').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+
+                  <div class="form-group" id="Asset9">
+                      <div class="col">
+                          <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">5. Describe source of risk and nature of potential impact on individuals</p>
+                          </div>
+                          <div class="font info" style= "display:none; padding-top: 10px;" id="info5">
+                                <div style="margin-top:20px; padding-bottom: 20px;">
+                                    <div class="gdpr_text_box_no_border">
+                                        <table class="table table-bordered" style="border-color: black; margin-bottom: 60px;">
+                                          <thead>
+                                            <tr style="font-size: 12px;">
+                                              <th scope="col">Describe source of risk and nature of potential impact on individuals. Include associated compliance and corporate risks as necessary.</th>
+                                              <th scope="col">Likelihood of harm <br>(Remote, possible or probable)</th>
+                                              <th scope="col">Severity of harm <br>(Minimal, significant or severe)</th>
+                                              <th scope="col">Overall risk <br>(Low, medium or high)</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                          {% if form5_tot_risk == 5 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form5_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_likelihood}}"></td>
+                                              <td><input name="form5_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_severity}}"></td>
+                                              <td><input name="form5_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form5_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_likelihood}}"></td>
+                                              <td><input name="form5_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_severity}}"></td>
+                                              <td><input name="form5_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b3.f5_3_question}}">{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form5_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_likelihood}}"></td>
+                                              <td><input name="form5_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_severity}}"></td>
+                                              <td><input name="form5_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b4.f5_4_question}}">{{form5_dict.s5_b4.f5_4_question}}</textarea></th>
+                                              <td><input name="form5_f4_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_likelihood}}"></td>
+                                              <td><input name="form5_f4_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_severity}}"></td>
+                                              <td><input name="form5_f4_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_overall_risk}}"></td>
+                                            </tr>
+                                          <tr>
+                                              <th scope="row"><textarea name="form5_f5" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b5.f5_5_question}}">{{form5_dict.s5_b5.f5_5_question}}</textarea></th>
+                                              <td><input name="form5_f5_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_likelihood}}"></td>
+                                              <td><input name="form5_f5_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_severity}}"></td>
+                                              <td><input name="form5_f5_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_overall_risk}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 4 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form5_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_likelihood}}"></td>
+                                              <td><input name="form5_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_severity}}"></td>
+                                              <td><input name="form5_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form5_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_likelihood}}"></td>
+                                              <td><input name="form5_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_severity}}"></td>
+                                              <td><input name="form5_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b3.f5_3_question}}">{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form5_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_likelihood}}"></td>
+                                              <td><input name="form5_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_severity}}"></td>
+                                              <td><input name="form5_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b4.f5_4_question}}">{{form5_dict.s5_b4.f5_4_question}}</textarea></th>
+                                              <td><input name="form5_f4_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_likelihood}}"></td>
+                                              <td><input name="form5_f4_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_severity}}"></td>
+                                              <td><input name="form5_f4_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_overall_risk}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 3 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form5_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_likelihood}}"></td>
+                                              <td><input name="form5_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_severity}}"></td>
+                                              <td><input name="form5_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form5_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_likelihood}}"></td>
+                                              <td><input name="form5_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_severity}}"></td>
+                                              <td><input name="form5_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b3.f5_3_question}}">{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form5_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_likelihood}}"></td>
+                                              <td><input name="form5_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_severity}}"></td>
+                                              <td><input name="form5_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_overall_risk}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 2 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form5_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_likelihood}}"></td>
+                                              <td><input name="form5_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_severity}}"></td>
+                                              <td><input name="form5_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_overall_risk}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form5_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_likelihood}}"></td>
+                                              <td><input name="form5_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_severity}}"></td>
+                                              <td><input name="form5_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_overall_risk}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 1 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form5_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; width:100%; resize: none;"  rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form5_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_likelihood}}"></td>
+                                              <td><input name="form5_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_severity}}"></td>
+                                              <td><input name="form5_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_overall_risk}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="height: 100px;"></div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+
+                <hr style="margin-top:60px">
+                <!--        End of Box 5-->
+
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText6()" style="display: none;" id="info-btn6"></button>
+                    <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn6').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+
+                  <div class="form-group" id="Asset10">
+                      <div class="col">
+                          <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">6. Describe source of risk and nature of potential impact on individuals</p>
+                          </div>
+                          <div class="font info" style= "display:none; padding-top: 10px;" id="info6">
+                                <div style="padding-top:20px; padding-bottom: 10px;">
+                                    <div class="gdpr_text_box_no_border">
+                                        <table class="table table-bordered" style="border-color: black;">
+                                          <thead>
+                                            <tr style="font-size: 12px; font-family: 'Ubuntu'">
+                                              <th scope="col">Risk</th>
+                                              <th scope="col">Options to reduce or eliminate risk</th>
+                                              <th scope="col">Effect on risk <br>(Eliminated, reduced or accepted)</th>
+                                              <th scope="col">Residual risk <br>(Low, medium or high)</th>
+                                                <th scope="col">Measure approved <br>(Yes/no)</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                          {% if form5_tot_risk == 5 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:380px;" rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form6_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_effect_on_risk}}"></td>
+                                              <td><input name="form6_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_residual_risk}}"></td>
+                                                <td><input name="form6_f1_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b1.s5_b1_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form6_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_effect_on_risk}}"></td>
+                                              <td><input name="form6_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_residual_risk}}"></td>
+                                                <td><input name="form6_f2_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b2.s5_b2_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b3.f5_3_question}}">{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form6_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_effect_on_risk}}"></td>
+                                              <td><input name="form6_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_residual_risk}}"></td>
+                                                <td><input name="form6_f3_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b3.s5_b3_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row"><textarea name="form6_f4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" value="{{form5_dict.s5_b4.f5_4_question}}">{{form5_dict.s5_b4.f5_4_question}}</textarea></th>
+                                              <td><input name="form6_f4_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f4_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_effect_on_risk}}"></td>
+                                              <td><input name="form6_f4_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_residual_risk}}"></td>
+                                              <td><input name="form6_f4_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b4.s5_b4_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row"><textarea name="form6_f5" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" value="{{form5_dict.s5_b5.f5_5_question}}">{{form5_dict.s5_b5.f5_5_question}}</textarea></th>
+                                              <td><input name="form6_f5_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f5_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_effect_on_risk}}"></td>
+                                              <td><input name="form6_f5_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_residual_risk}}"></td>
+                                              <td><input name="form6_f5_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{form5_dict.s5_b5.s5_b5_measure_approved}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 4 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:380px;" rows="2" cols="50" >{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form6_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b1.s5_b1_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b1.s5_b1_effect_on_risk}}"></td>
+                                              <td><input name="form6_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b1.s5_b1_residual_risk}}"></td>
+                                                <td><input name="form6_f1_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b1.s5_b1_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" >{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form6_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b2.s5_b2_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b2.s5_b2_effect_on_risk}}"></td>
+                                              <td><input name="form6_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b2.s5_b2_residual_risk}}"></td>
+                                                <td><input name="form6_f2_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b2.s5_b2_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" >{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form6_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b3.s5_b3_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b3.s5_b3_effect_on_risk}}"></td>
+                                              <td><input name="form6_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b3.s5_b3_residual_risk}}"></td>
+                                                <td><input name="form6_f3_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b3.s5_b3_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row"><textarea name="form6_f4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%">{{form5_dict.s5_b4.f5_4_question}}</textarea></th>
+                                              <td><input name="form6_f4_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b4.s5_b4_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f4_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b4.s5_b4_effect_on_risk}}"></td>
+                                              <td><input name="form6_f4_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b4.s5_b4_residual_risk}}"></td>
+                                              <td><input name="form6_f4_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_5_dict.s5_b4.s5_b4_measure_approved}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 3 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:380px;" rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form6_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b1.s5_b1_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b1.s5_b1_effect_on_risk}}"></td>
+                                              <td><input name="form6_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b1.s5_b1_residual_risk}}"></td>
+                                                <td><input name="form6_f1_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b1.s5_b1_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form6_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b2.s5_b2_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b2.s5_b2_effect_on_risk}}"></td>
+                                              <td><input name="form6_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b2.s5_b2_residual_risk}}"></td>
+                                                <td><input name="form6_f2_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b2.s5_b2_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b3.f5_3_question}}">{{form5_dict.s5_b3.f5_3_question}}</textarea></th>
+                                              <td><input name="form6_f3_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b3.s5_b3_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f3_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b3.s5_b3_effect_on_risk}}"></td>
+                                              <td><input name="form6_f3_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b3.s5_b3_residual_risk}}"></td>
+                                                <td><input name="form6_f3_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{liklihood_dict_value.s5_b3.s5_b3_measure_approved}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 2 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:380px;" rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form6_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_effect_on_risk}}"></td>
+                                              <td><input name="form6_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_residual_risk}}"></td>
+                                                <td><input name="form6_f1_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_measure_approved}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:100%" rows="2" cols="50" value="{{form5_dict.s5_b2.f5_2_question}}">{{form5_dict.s5_b2.f5_2_question}}</textarea></th>
+                                              <td><input name="form6_f2_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b2_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f2_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b2_effect_on_risk}}"></td>
+                                              <td><input name="form6_f2_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b2_residual_risk}}"></td>
+                                                <td><input name="form6_f2_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b2_measure_approved}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          {% if form5_tot_risk == 1 %}
+                                            <tr>
+                                                <th scope="row"><textarea name="form6_f1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; resize: none; width:380px;" rows="2" cols="50" value="{{form5_dict.s5_b1.f5_1_question}}">{{form5_dict.s5_b1.f5_1_question}}</textarea></th>
+                                              <td><input name="form6_f1_1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_option_reduce_risk}}"></td>
+                                              <td><input name="form6_f1_2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_effect_on_risk}}"></td>
+                                              <td><input name="form6_f1_3" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_residual_risk}}"></td>
+                                                <td><input name="form6_f1_4" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{final_pdf_dict.s5_b1_measure_approved}}"></td>
+                                            </tr>
+                                          {% endif %}
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                              <div style="height: 120px;"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                <hr style="margin-top:50px">
+                <!--        End of Box 6-->
+
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText7()" style="display: none;" id="info-btn7"></button>
+                      <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn7').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+
+                  <div class="form-group" id="Asset11">
+                      <div class="col">
+                          <div class="gdpr-steps-div" style="font-size: 16px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu'">7. Identify and obtain necessary approvals</p>
+                          </div>
+                          <div class="font info" style= "display:none; padding-top: 60px;" id="info7">
+                                <table class="table table-bordered" style="width:100% margin-top: 150px; border: 1px solid black; border-collapse: collapse;">
+                                  <tr>
+                                    <th style="width: 200px; font-size: 12px;">Item</th>
+                                    <th style="width: 200px; font-size: 12px;">Name/Position/date</th>
+                                      <th style="width: 200px; font-size: 12px;">Notes</th>
+                                  </tr>
+                                  <tr>
+                                    <td class="ub-font">Measures approved by:</td>
+                                    <td><input name="m_approved_by" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 40px; width:100%" value="{{name_of_dpo}}"></td>
+                                    <td class="ub-font">Integrate actions back into project plan, with date and responsibility for completion</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="ub-font">Residual risks approved by: </td>
+                                    <td><input name="r_approved_by" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 40px; width:100%" value="{{data_owner}}"></td>
+                                        <td class="ub-font">If accepting any residual high risk, consult the ICO before going ahead</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ub-font">DPO advice provided: </td>
+                                    <td><input name="dpo_advice" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 40px; width:100%" value="{{dpo_advice}}"></td>
+                                        <td class="ub-font">DPO should advise on compliance, step 6 measures and whether processing can proceed</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="height: 130px;" class="ub-font">Summary of DPO advice: <input name="summary_dpo_advice" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 50px; width:100%"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ub-font">DPO advice accepted or overruled by:  </td>
+                                        <td class="ub-font"><input name="dpo_advice_or_overruled" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{data_owner}}"></td>
+                                        <td class="ub-font">If overruled, you must explain your reasons</td>
+                                    </tr>
+                                     <tr>
+                                        <td colspan="3" style="height: 130px;" class="ub-font">Comments: <input name="comments1" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{comments1}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ub-font">Consultation responses reviewed by:</td>
+                                        <td class="ub-font"><input name="response_reviewed_by" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{consultant_name}}"></td>
+                                        <td class="ub-font">If your decision departs from individuals’ views, you must explain your reasons</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" style="height: 130px;" class="ub-font">Comments: <input name="comments2" style="margin-top: 20xp; font-size: 12px; border:0; outline:0; height: 30px; width:100%" value="{{comments1}}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ub-font">This DPIA will kept under review by:</td>
+                                        <td class="ub-font"><input name="under_review_by" style="margin-top: 20xp; font-size: 12px; font-weight: 400px; border:0; outline:0; height: 30px; width:100%" value="{{data_owner}}"></td>
+                                        <td class="ub-font">The DPO should also review ongoing compliance with DPIA</td>
+                                    </tr>
+                                </table>
+                          </div>
+                      </div>
+                  </div>
+                <hr style="margin-top:50px">
+                <!--        End of Box 7-->
+
+                <div style="position:absolute; left:95%; padding-right: 5%;">
+                    <button type="button" onclick="toggleText8()" style="display: none;" id="info-btn8"></button>
+                      <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn8').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+
+                  <div class="form-group" id="Asset12">
+                      <div class="col">
+                           <div class="gdpr-steps-div" style="font-size: 16px; margin-bottom: 90px;">
+                               <p style="font-size:14px; font-family: 'Ubuntu';">8. Identify and record outcomes</p>
+                          </div>
+                          <div class="font info" style= "display:none; padding-top: 10px;" id="info8">
+                                <div style="margin-top:80px; text-align: left;">
+                                    <textarea name="text_box_8"  class="gdpr_text_box_1_1" style="text-align left; overflow-y: scroll; max-height: 200px; min-height: 200px;">{{f8_final_text}}
+                                    </textarea>
+                                    <div style="margin-top:60px; color:black; margin-bottom: 10px; font-family: 'Ubuntu'; font-size: 14px;">
+                                         Data Protection Officer comments:
+                                    </div>
+                                    <textarea style=" resize: none; width:100%; font-size: 12px;" name="dpo_comments"></textarea>
+                                    <div style="margin-top:20px; color:black; margin-bottom: 10px; font-family: 'Ubuntu'; font-size: 14px;">
+                                         Data Owner comments:
+                                    </div>
+                                    <textarea style=" resize: none; width:100%; font-size: 12px;" name="do_comments"></textarea>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+            </form>
+        </div>
+    </div>
+<img class="bar-png33"  src="static/assets/img/bar.png"/>
+{% endblock %}
+</body>
+
+</html>

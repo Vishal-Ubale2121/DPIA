@@ -1,0 +1,199 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    textarea {
+      resize: none;
+    }
+    .button {
+  border-radius: 4px;
+  background: #12ABDB;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  width: 180px;
+  height: 32px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+    </style>
+<div class="alt-nav">
+    <div style="position: absolute;
+    height: 26px;
+    left: 11.39%;
+    right: 38.75%;
+    top: 32%;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+        Overview
+    </div>
+</div>
+<body class="body-class">
+  <link href="static/assets/css/style-figma.css" rel="stylesheet">
+  <main id="main">
+      <script type="text/javascript">
+
+            window.onload = function(){
+                console.log('inside the function')
+
+                var value_dict = {{value_dict|safe}}
+                console.log(value_dict)
+
+                if (value_dict.status == 'Approved'){
+                    document.forms['screening_form1']['name_of_organization'].readOnly = true;
+                    document.forms['screening_form1']['industry'].readOnly = true;
+                    document.forms['screening_form1']['scope_of_service_project'].readOnly = true;
+                    document.forms['screening_form1']['name_of_DPO'].readOnly = true;
+                    document.forms['screening_form1']['title_of_DPO'].readOnly = true;
+
+                    if (value_dict.data_protection_officer == '0'){
+                        document.getElementById('html2').disabled = true;
+                    }
+                    else{
+                        document.getElementById('html1').disabled = true;
+                    }
+                }
+
+                if (value_dict != 'undefined' && value_dict !='0'){
+                    console.log('enter in value replacement')
+                    if(document.getElementsByName('name_of_organization').value == null){
+                    document.forms['screening_form1']['name_of_organization'].value = value_dict.name_of_organization;
+                    }
+
+                    if(document.getElementsByName('industry').value == null){
+                    document.forms['screening_form1']['industry'].value = value_dict.industry;
+                    }
+
+                    if(document.getElementsByName('scope_of_service_project').value == null){
+                    document.forms['screening_form1']['scope_of_service_project'].value = value_dict.scope_of_service_project;
+                    }
+
+                    if(document.getElementsByName('data_protection_officer').value == null){
+                    document.forms['screening_form1']['data_protection_officer'].value = value_dict.data_protection_officer;
+                    }
+
+                    if(document.getElementsByName('name_of_DPO').value == null){
+                    document.forms['screening_form1']['name_of_DPO'].value = value_dict.name_of_DPO;
+                    }
+
+                    if(document.getElementsByName('title_of_DPO').value == null){
+                    document.forms['screening_form1']['title_of_DPO'].value = value_dict.title_of_DPO;
+                    }
+                }
+            }
+
+            function toggleInput1() {
+                    var data_protection_officer = document.getElementById("data_protection_officer");
+                    var div1 = document.getElementById("div1");
+                    var div2 = document.getElementById("div2");
+                    div1.style.display = 'block';
+                    div2.style.display = 'block';
+
+            }
+            function toggleInput2() {
+                    var data_protection_officer = document.getElementById("data_protection_officer");
+                    var div1 = document.getElementById("div1");
+                    var div2 = document.getElementById("div2");
+                    div1.style.display = 'none';
+                    div2.style.display = 'none';
+
+            }
+      </script>
+
+      <div class="rect-4-1 font" style="overflow-x: hidden; overflow-y: hidden;">
+          <form method="POST" action="screening" name="screening_form1">
+                <div class="input-1 col" style="left: 5%; top: 10%;">
+                    <label class="label-top" style="width: 260px;">Department </label>
+                    <input type="text" style="margin-top: 5px;" class="input-master" name="name_of_organization" id="Name of the Organization"  placeholder="eg. Finance" required>
+                  </div>
+                <div class="input-1 col" style="left: 35%; top: 10%;">
+                    <label class="label-top">Project Name</label>
+                    <input style="margin-top: 5px;" type="text" class="input-master" id="Industry" placeholder="eg. Banking" name="industry">
+                </div>
+                <div class="input-1 col" style="left: 5%;top: 32%;">
+                    
+                        <label class="label-top" style="width: 260px; margin-top: 5px;" >Scope of Service/Project</label>
+                        <textarea  rows="2" style="width: 185%; height: 100%; mix-height: 30px; overflow-y: scroll; margin-top: 5px" class="input-master" id="Scope of Service / Project" name="scope_of_service_project" placeholder="Enter the scope of service/project"></textarea>
+                </div>
+              
+                <div class="input-1 col" style="left: 5%;top: 58%;">
+                    <label class="label-top" style="width: 380px;">Does your organization have Data Protection Officer (DPO)?</label>
+                    <div  style="margin-top:-18px; margin-left: -30px; color: black;"  id="data_protection_officer">
+                        <input type="radio" name="data_protection_officer"  onclick="toggleInput1();"  id="html1"  value="0"> Yes
+                        <input type="radio" name="data_protection_officer" onclick="toggleInput2();"  id="html2"  value="1"> No
+                    </div>
+                </div>
+              <div class="input-1 col" id="div1" style="left: 5%; top: 74%;">
+                    <label class="label-top" style="width: 300px;">Name of DPO</label>
+                    <input type="text" style="margin-top: 5px;" class="input-master" id="Name of Data Protection Officer (DPO)" name="name_of_DPO" placeholder="eg. Joe Doe">
+              </div>
+               <div class="input-1 col" id="div2" style="left: 35%;top: 74%;">
+                    <label class="label-top" style="width: 300px;">Title of DPO</label>
+                    <input style="margin-top: 5px;" type="text" class="input-master" name="title_of_DPO" id="Title of Data Protection Officer (DPO)" placeholder="eg. IT Head">
+              </div>
+            <div style="position: absolute;
+            left: 65%;
+            right: 0.2%;
+            top: 7.4%;
+            bottom: 6.14%;
+            ">
+                <img src="static/assets/img/Search-cuate 1.png" style="width: 80%; height: auto;">
+            </div>
+            <div>
+                <button type="submit" class="button" style="margin-top: 280px; margin-left: 580px;"><span>Proceed to Screening </span</button>
+            </div>
+              <p style="margin-top: 355px; margin-left: 42px;">* All the fields are mandatory on this page.</p>
+          </form>
+      </div>
+      <img class="bar-png" src="static/assets/img/bar.png"/>
+  </main>
+        <!-- End #main -->
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<div class="alt-nav">
+    <div style="position: absolute;
+    height: 26px;
+    left: 11.39%;
+    right: 38.75%;
+    top: 32%;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+        Overview
+    </div>
+</div>
+<style>
+ .button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+<script>
+  window.onload = function(){
+        console.log('inside the function')
+        var session_db = {{ db_dict_num|safe }}
+        console.log('Session DB' + session_db);
+
+        var session_dict = {{ session_dict|safe }}
+        console.log(session_dict);
+
+        var session = {{ db_dict_num|safe }}
+        console.log('Session Data' + session);
+
+        var value_dict = {{value_dict|safe}}
+        console.log(value_dict)
+
+        var status = value_dict.status
+        if (status == 'Approved'){
+            console.log('inside Readonly')
+            document.forms['organization_form']['title'].readOnly = true;
+            document.forms['organization_form']['author'].readOnly = true;
+            document.forms['organization_form']['department'].readOnly = true;
+            document.forms['organization_form']['manager'].readOnly = true;
+            document.forms['organization_form']['date'].readOnly = true;
+            document.forms['organization_form']['role'].readOnly = true;
+        }
+
+        if (value_dict != '0' &&  session != '0'){
+            console.log('Enter in session data replacement')
+            if(document.getElementsByName('title').value == null){
+                document.forms['organization_form']['title'].value = value_dict.title;
+            }
+            if(document.getElementsByName('author').value == null){
+                document.forms['organization_form']['author'].value = value_dict.author;
+            }
+            if(document.getElementsByName('role').value == null){
+                document.forms['organization_form']['role'].value = value_dict.role;
+            }
+            if(document.getElementsByName('department').value == null){
+                document.forms['organization_form']['department'].value = value_dict.department;
+            }
+            if(document.getElementsByName('manager').value == null){
+                document.forms['organization_form']['manager'].value = value_dict.manager;
+            }
+            if(document.getElementsByName('status').value == null){
+                document.forms['organization_form']['status'].value = value_dict.status;
+            }
+            if(document.getElementsByName('date').value == null){
+                document.forms['organization_form']['date'].value = value_dict.date;
+            }
+
+            console.log('Value Replaced Successfully');
+        }
+  }
+</script>
+<style>
+.button {
+  border-radius: 4px;
+  background: #12ABDB;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  width: 180px;
+  height: 32px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+<body class="body-class" style="overflow-y: hidden; overflow-x: hidden;">
+    <div class="rect-1">
+    <p class="h1" style="font-size: 16.3px; margin-left: 10px; width: 850px; margin-top: 70px;">One stop solution to centralize, standardize and streamline your Data Protection Impact Assessment process.</p>
+    </div>
+  <div class="rect-4-index font">
+    <form method="POST" action="index" name="organization_form">
+      <div class="input-1 col " style="left: 5%; top: 10%;">
+        <label for="inputPassword" class="label-top">Title</label>
+        <input type="text" style="margin-top: 5px;" name="title" class="input-master" id="inputPassword"
+          placeholder="Title of DPIA" required>
+      </div>
+      <div class="input-1 col " style="left: 5%;top: 33%;">
+        <label for="inputPassword" class="label-top">Approver</label>
+        <input type="text" name="manager" style="margin-top: 5px;" class="input-master" id="inputPassword" placeholder="eg: John Doe"
+          required>
+      </div>
+      <div class="input-1 col " style="left: 5%;top: 57%;">
+        <label for="inputPassword" class="label-top">Author</label>
+        <input type="text" style="margin-top: 5px;" name="author" class="input-master" id="inputPassword" placeholder="eg: John Doe"
+          required>
+      </div>
+      <div class="input-1 col " style="left: 5%; top: 74%; display: none;">
+        <label for="inputPassword" class="label-top">DPIA Status</label>
+        <select class="input-master-box" name="status" style="margin-top: 5px;" required>
+          {% if value_dict != 0 %}
+            {% if value_dict.status == 'Approved'%}
+              <option value="Approved">Approved</option>
+            {% elif value_dict.status == 'Rejected' %}
+              <option value="Rejected">Rejected</option>
+            {% else %}
+              <option value="In-Progress">In-Progress</option>
+            {% endif %}
+          {% else %}
+            <option value="In-Progress">In-Progress</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="input-1 col" style="left: 38%; top: 10%;">
+<!--        <label for="inputPassword" class="label-top">Project Name</label>-->
+<!--        <input style="margin-top: 5px;" type="text" name="role" class="input-master" id="inputPassword" placeholder="eg: Project name"-->
+<!--          required>-->
+        <label for="inputPassword" class="label-top" style="width: 140px;">Name of Organization</label>
+        <input style="margin-top: 5px;" type="text" name="role" class="input-master" id="inputPassword" placeholder="eg: Capgemini"
+          required>
+      </div>
+      <div class="input-1 col" style="left: 38%; top: 33%;">
+        <label for="inputPassword" class="label-top">Date</label>
+        <input style="margin-top: 5px;" type="date" name="date" class="input-master-box" required>
+      </div>
+      <div class="input-1 col" style="left: 38%; top: 57%;">
+<!--        <label for="inputPassword" class="label-top">Department</label>-->
+<!--        <input style="margin-top: 5px;" type="text" name="department" class="input-master" id="inputPassword" placeholder="eg: IT" required>-->
+        <label for="inputPassword" class="label-top">Industry</label>
+        <input style="margin-top: 5px;" type="text" name="department" class="input-master" id="inputPassword" placeholder="eg: Finance" required>
+      </div>
+        <button type="submit" class="button" style="margin-top: 240px; margin-left: 600px;"><span>Proceed </span></button>
+      <p style="margin-top: 270px; margin-left: 42px;">* All the fields are mandatory on this page.</p>
+    </form>
+    <img class="group11" style="top: 10%;left: 69%;" src="static/assets/img/Group11.svg" />
+  </div>
+    <img class="bar-png" src="static/assets/img/bar.png"/>
+  {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<script type ="text/javascript">
+    window.onload = function() {
+        var value = {{value|safe}}
+        console.log('This is value ' + value)
+
+        var approve_value = {{approve_value|safe}}
+        console.log('what is status '+ approve_value)
+
+        if(value == 1){
+         var pdf_button = document.getElementById('pdf_button')
+         pdf_button.style.background = '#0E88AF';
+         pdf_button.style.color = '#FFFFFF';
+         pdf_button.disabled = false;
+        }
+
+    }
+
+    function pdf_page(){
+        window.location.href = "{% url 'pdf' %}"
+        console.log('Opening PDF')
+    }
+
+    function risk_clickable_box1(){
+        var title = "Identify the need for a DPIA"
+        var num = "1"
+        var rs1 = {{risk_score1.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs1 + "?number="+num
+        console.log('1')
+    }
+
+    function risk_clickable_box2(){
+        var num = "2"
+        var rs2 = {{risk_score2.1|safe}}
+        var title = "Describe the processing"
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs2 + "?number="+num
+        console.log('2')
+    }
+
+    function risk_clickable_box3(){
+        var title = "Consultation process"
+        var num = "3"
+        var rs3 = {{risk_score3.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs3 + "?number="+num
+        console.log('3')
+    }
+
+    function risk_clickable_box4(){
+        var title = "Assess necessity and proportionality"
+        var num = "4"
+        var rs4 = {{risk_score4.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs4 + "?number="+num
+        console.log('4')
+    }
+
+    function risk_clickable_box5(){
+        var title = "Identify and assess risks"
+        var num = "5"
+        var rs5 = {{risk_score5.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs5 + "?number="+num
+        console.log('5')
+    }
+
+    function risk_clickable_box6(){
+        var title = "Identify measures to reduce risk"
+        var num = "6"
+        var rs6 = {{risk_score6.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs6 + "?number="+num
+        console.log('6')
+    }
+
+    function risk_clickable_box7(){
+        var title = "Sign off and record outcomes"
+        var num = "7"
+        var rs7 = {{risk_score7.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs7 + "?number="+num
+        console.log('7')
+    }
+
+    function risk_clickable_box8(){
+        var title = "Post DPIA Process"
+        var num = "8"
+        var rs8 = {{risk_score8.1|safe}}
+        window.location.href = "{% url 'risk_summary_details' %}" + "?search="+title + "?score="+rs8 + "?number="+num
+        console.log('8')
+    }
+</script>
+<div class="alt-nav" style="width:1263px;">
+    <div style="position: absolute;
+    height: 26px;
+    left: 11.39%;
+    right: 38.75%;
+    top: 30%;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+        {% if approve_value == '1' %}
+        <a href="media/final_pdf/result.pdf" download><button style="margin-top: 4px;" class="summary-button1">Download PDF</button></a>
+        {% else %}
+            <a href="{% url 'gdpr_report' %}"><button id="pdf_button2" style="margin-top: 4px;" class="summary-button1">Proceed to GDPR Report</button>
+         {% endif %}
+        <a href="media/excel/summary_report_filled.xlsx" download><button class="summary-button2" style="margin-top: 4px;" >Create Summary Report</button></a>
+        Risk Summary
+    </div>
+</div>
+
+<body style="background: linear-gradient(3.47deg, #00649B 13.28%, #66A9CD 93.28%);
+position: static;
+width: 1090px;
+height: 1100px; margin-left: 150px;
+padding-top: 100px;"
+>
+    <div class="user-info1">
+      <div style="width: 20%; height: 100px; float: left;">
+          <p class="gdpr_font1">Total Risks:<b>&nbsp;{{ total_no_of_risk }}</b></p>
+      </div>
+    </div>
+
+    <!--    Risk Summary box 1-->
+    <a href="#" onClick="risk_clickable_box1()">
+        <div class="risk-clickable-box1" id="risk-clickable-box1">
+            <div class="inside-risk-clickable-box1">
+                <p class="risk_summary_title">Identify the need for a DPIA</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score1.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score1.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form1_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form1_percentage }}%</p>
+                {% elif  form1_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form1_percentage }}%</p>
+                {% elif form1_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form1_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form1_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 2-->
+    <a href="#" onClick="risk_clickable_box2()">
+        <div class="risk-clickable-box2" id="risk-clickable-box2">
+            <div class="inside-risk-clickable-box2">
+                <p class="risk_summary_title">Describe the processing</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score2.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score2.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form2_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form2_percentage }}%</p>
+                {% elif  form2_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form2_percentage }}%</p>
+                {% elif form2_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form2_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form2_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 3-->
+    <a href="#" onClick="risk_clickable_box3()">
+        <div class="risk-clickable-box3" id="risk-clickable-box3">
+            <div class="inside-risk-clickable-box3">
+                <p class="risk_summary_title">Consultation process</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score3.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score3.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form3_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form3_percentage }}%</p>
+                {% elif  form3_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form3_percentage }}%</p>
+                {% elif form3_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form3_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form3_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 4-->
+    <a href="#" onClick="risk_clickable_box4()">
+        <div class="risk-clickable-box4" id="risk-clickable-box4">
+            <div class="inside-risk-clickable-box4">
+                <p class="risk_summary_title">Assess necessity and proportionality</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score4.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score4.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form4_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form4_percentage }}%</p>
+                {% elif  form4_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form4_percentage }}%</p>
+                {% elif form4_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form4_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form4_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 5-->
+    <a href="#" onClick="risk_clickable_box5()">
+        <div class="risk-clickable-box5" id="risk-clickable-box5">
+            <div class="inside-risk-clickable-box5">
+                <p class="risk_summary_title">Identify and assess risks</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score5.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score5.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form5_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form5_percentage }}%</p>
+                {% elif  form5_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form5_percentage }}%</p>
+                {% elif form5_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form5_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form5_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 6-->
+    <a href="#" onClick="risk_clickable_box6()">
+        <div class="risk-clickable-box6" id="risk-clickable-box6">
+            <div class="inside-risk-clickable-box6">
+                <p class="risk_summary_title">Identify measures to reduce risk</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score6.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score6.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form6_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form6_percentage }}%</p>
+                {% elif  form6_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form6_percentage }}%</p>
+                {% elif form6_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form6_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form6_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+    <!--    Risk Summary box 7-->
+    <a href="#" onClick="risk_clickable_box7()">
+        <div class="risk-clickable-box7" id="risk-clickable-box7">
+            <div class="inside-risk-clickable-box7">
+                <p class="risk_summary_title">Sign off and record outcomes</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score7.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score7.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form7_percentage <= 30 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form7_percentage }}%</p>
+                {% elif  form7_percentage <= 50 %}
+                <p class="num_risk3"><span class="dot" style="background-color: yellow"></span>&nbsp;{{ form7_percentage }}%</p>
+                {% elif form7_percentage <= 70 %}
+                <p class="num_risk3"><span class="dot" style="background-color: orange"></span>&nbsp;{{ form7_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form7_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+     <!--    Risk Summary box 8-->
+    <a href="#" onClick="risk_clickable_box8()">
+        <div class="risk-clickable-box8" id="risk-clickable-box8">
+            <div class="inside-risk-clickable-box8">
+                <p class="risk_summary_title">Post DPIA Process</p>
+            </div>
+            <div class="risk-details1">
+                <p>Numbers of Risks</p>
+                <p class="num_risk1">{{ risk_score8.1 }}</p>
+            </div>
+            <div class="risk-details2">
+                <p>Risk Score</p>
+                <p class="num_risk2">{{ risk_score8.0 }}</p>
+            </div>
+            <div class="risk-details3">
+                <p>Risk Percentage</p>
+                {% if form8_percentage <= 1 %}
+                <p class="num_risk3"><span class="dot" style="background-color: green"></span>&nbsp;{{ form8_percentage }}%</p>
+                {% elif  form8_percentage <= 19 %}
+                <p class="num_risk3"><span class="dot" style="background-color: #F5F99C"></span>&nbsp;{{ form8_percentage }}%</p>
+                {% elif form8_percentage <= 49 %}
+                <p class="num_risk3"><span class="dot" style="background-color: #F5F99C"></span>&nbsp;{{ form8_percentage }}%</p>
+                {% elif form8_percentage <= 79 %}
+                <p class="num_risk3"><span class="dot" style="background-color: #FFBF00"></span>&nbsp;{{ form8_percentage }}%</p>
+                {% else %}
+                 <p class="num_risk3"><span class="dot" style="background-color: red"></span>&nbsp;{{ form8_percentage }}%</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+
+<img class="bar-png5" src="static/assets/img/bar.png"/>
+{% endblock %}
+</body>
+
+</html>

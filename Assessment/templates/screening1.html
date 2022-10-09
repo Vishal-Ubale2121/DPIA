@@ -1,0 +1,971 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+.button {
+  border-radius: 4px;
+  background: #12ABDB;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  width: 130px;
+  height: 32px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+ </style>
+<body style="background: linear-gradient(3.47deg, #00649B 13.28%, #66A9CD 93.28%);
+position: static;
+width: 900px;
+height: 1820px;">
+  <link href="static/assets/css/style-figma.css" rel="stylesheet">
+  <main id="main">
+      <script type="text/javascript">
+
+        window.onload = function(){
+            console.log('inside the function')
+            var value_dict = {{value_dict|safe}}
+            console.log(value_dict)
+
+<!--            Disabled all values if Status is Approved-->
+            if (value_dict.status == 'Approved'){
+                if (value_dict.data_processing_project == '0'){
+                    document.getElementById('data_processing_project2').disabled = true;
+                }
+                else{
+                    document.getElementById('data_processing_project').disabled = true;
+                }
+
+                if (value_dict.select_data_process == '1'){
+                    document.getElementById('que_2_opt0').disabled = true;
+                    document.getElementById('que_2_opt2').disabled = true;
+                    document.getElementById('que_2_opt3').disabled = true;
+                    document.getElementById('que_2_opt4').disabled = true;
+                }
+                else if(value_dict.select_data_process == '2'){
+                    document.getElementById('que_2_opt0').disabled = true;
+                    document.getElementById('que_2_opt1').disabled = true;
+                    document.getElementById('que_2_opt3').disabled = true;
+                    document.getElementById('que_2_opt4').disabled = true;
+                }
+                else if(value_dict.select_data_process == '3'){
+                    document.getElementById('que_2_opt0').disabled = true;
+                    document.getElementById('que_2_opt1').disabled = true;
+                    document.getElementById('que_2_opt2').disabled = true;
+                    document.getElementById('que_2_opt4').disabled = true;
+                }
+                else{
+                    document.getElementById('que_2_opt0').disabled = true;
+                    document.getElementById('que_2_opt1').disabled = true;
+                    document.getElementById('que_2_opt2').disabled = true;
+                    document.getElementById('que_2_opt3').disabled = true;
+                }
+
+                if (value_dict.processing_data == '1'){
+                    console.log('Disabled')
+                    document.getElementById('que_3_opt0').disabled = true;
+                    document.getElementById('que_3_opt2').disabled = true;
+                }
+                else{
+                    document.getElementById('que_3_opt0').disabled = true;
+                    document.getElementById('que_3_opt1').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve == '0'){
+                    document.getElementById('div_5').disabled = true;
+                }
+                else{
+                    document.getElementById('div_4').disabled = true;
+                }
+
+                 if(value_dict.automated_decision_making == '0'){
+                    document.getElementById('div_7').disabled = true;
+                }
+                else{
+                    document.getElementById('div_6').disabled = true;
+                }
+
+                if(value_dict.systematic_monitoring == '0'){
+                    document.getElementById('div_9').disabled = true;
+                }
+                else{
+                    document.getElementById('div_8').disabled = true;
+                }
+
+                if(value_dict.process_data_on_large_scale == '0'){
+                    document.getElementById('div_11').disabled = true;
+                }
+                else{
+                    document.getElementById('div_10').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_reusing_old_dataset == '0'){
+                    document.getElementById('div_14').disabled = true;
+                }
+                else{
+                    document.getElementById('div_13').disabled = true;
+                }
+
+                if(value_dict.vulnerable_data_subjects == '0'){
+                    document.getElementById('div_16').disabled = true;
+                }
+                else{
+                    document.getElementById('div_15').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_innovative_technologies == '0'){
+                    document.getElementById('div_18').disabled = true;
+                }
+                else{
+                    document.getElementById('div_17').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_sharing_data_outside_european_union == '0'){
+                    document.getElementById('div_20').disabled = true;
+                }
+                else{
+                    document.getElementById('div_19').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_collection_personal_information == '0'){
+                    document.getElementById('div_22').disabled = true;
+                }
+                else{
+                    document.getElementById('div_21').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_third_party == '0'){
+                    document.getElementById('div_24').disabled = true;
+                }
+                else{
+                    document.getElementById('div_23').disabled = true;
+                }
+
+                if(value_dict.data_processing_involve_change_information_is_stored_secured == '0'){
+                    document.getElementById('div_26').disabled = true;
+                }
+                else{
+                    document.getElementById('div_25').disabled = true;
+                }
+
+                if(value_dict.data_procc_involve_chg_personal_data_currently_collected == '0'){
+                    document.getElementById('div_28').disabled = true;
+                }
+                else{
+                    document.getElementById('div_27').disabled = true;
+                }
+
+                 if(value_dict.conducted_DPIA_for_similar_scope_of_service == '0'){
+                    document.getElementById('div_30').disabled = true;
+                }
+                else{
+                    document.getElementById('div_29').disabled = true;
+                }
+
+            }
+
+            if (value_dict != 'undefined'){
+                if(document.getElementsByName('data_processing_project').value == null){
+                document.forms['screening1']['data_processing_project'].value = value_dict.data_processing_project;
+                }
+
+                if(document.getElementsByName('select_data_process').value == null){
+                document.forms['screening1']['select_data_process'].value = value_dict.select_data_process;
+                }
+
+                if(document.getElementsByName('processing_data').value == null){
+                document.forms['screening1']['processing_data'].value = value_dict.processing_data;
+                }
+
+                if(document.getElementsByName('data_processing_involve').value == null){
+                document.forms['screening1']['data_processing_involve'].value = value_dict.data_processing_involve;
+                }
+
+                if(document.getElementsByName('automated_decision_making').value == null){
+                document.forms['screening1']['automated_decision_making'].value = value_dict.automated_decision_making;
+                }
+
+                if(document.getElementsByName('systematic_monitoring').value == null){
+                document.forms['screening1']['systematic_monitoring'].value = value_dict.systematic_monitoring;
+                }
+
+                if(document.getElementsByName('process_data_on_large_scale').value == null){
+                document.forms['screening1']['process_data_on_large_scale'].value = value_dict.process_data_on_large_scale;
+                }
+
+                if(document.getElementsByName('data_processing_involve_reusing_old_dataset').value == null){
+                document.forms['screening1']['data_processing_involve_reusing_old_dataset'].value = value_dict.data_processing_involve_reusing_old_dataset;
+                }
+
+                if(document.getElementsByName('vulnerable_data_subjects').value == null){
+                document.forms['screening1']['vulnerable_data_subjects'].value = value_dict.vulnerable_data_subjects;
+                }
+
+                if(document.getElementsByName('data_processing_involve_innovative_technologies').value == null){
+                document.forms['screening1']['data_processing_involve_innovative_technologies'].value = value_dict.data_processing_involve_innovative_technologies;
+                }
+
+                if(document.getElementsByName('data_processing_involve_sharing_data_outside_european_union').value == null){
+                document.forms['screening1']['data_processing_involve_sharing_data_outside_european_union'].value = value_dict.data_processing_involve_sharing_data_outside_european_union;
+                }
+
+                if(document.getElementsByName('data_processing_involve_collection_personal_information').value == null){
+                document.forms['screening1']['data_processing_involve_collection_personal_information'].value = value_dict.data_processing_involve_collection_personal_information;
+                }
+
+                if(document.getElementsByName('data_processing_involve_third_party').value == null){
+                document.forms['screening1']['data_processing_involve_third_party'].value = value_dict.data_processing_involve_third_party;
+                }
+
+                if(document.getElementsByName('data_processing_involve_change_information_is_stored_secured').value == null){
+                document.forms['screening1']['data_processing_involve_change_information_is_stored_secured'].value = value_dict.data_processing_involve_change_information_is_stored_secured;
+                }
+
+                if(document.getElementsByName('data_procc_involve_chg_personal_data_currently_collected').value == null){
+                document.forms['screening1']['data_procc_involve_chg_personal_data_currently_collected'].value = value_dict.data_procc_involve_chg_personal_data_currently_collected;
+                }
+
+                if(document.getElementsByName('conducted_DPIA_for_similar_scope_of_service').value == null){
+                document.forms['screening1']['conducted_DPIA_for_similar_scope_of_service'].value = value_dict.conducted_DPIA_for_similar_scope_of_service;
+                }
+                console.log("Value replaced successfully")
+            }
+        }
+
+        function toggleInputHide() {
+                console.log('Hide method executed')
+
+                var Asset1 = document.getElementById("Asset1");
+                var sideButton1 = document.getElementById("info-btn1");
+
+                Asset1.style.display = 'none';
+                sideButton1.style.display = 'none'
+
+                var Asset2 = document.getElementById("Asset2");
+                var sideButton2 = document.getElementById("info-btn2");
+                Asset2.style.display = 'none';
+                sideButton2.style.display = 'none'
+
+                var Asset3 = document.getElementById("Asset3");
+                var sideButton3 = document.getElementById("info-btn3");
+                Asset3.style.display = 'none';
+
+                var Asset4 = document.getElementById("Asset4");
+                var sideButton4 = document.getElementById("info-btn4");
+                Asset4.style.display = 'none';
+
+                var Asset5 = document.getElementById("Asset5");
+                var sideButton5 = document.getElementById("info-btn5");
+                Asset5.style.display = 'none';
+
+                var Asset6 = document.getElementById("Asset6");
+                var sideButton6 = document.getElementById("info-btn6");
+                Asset6.style.display = 'none';
+
+                var Asset7 = document.getElementById("Asset7");
+                var sideButton1 = document.getElementById("info-btn1");
+                Asset7.style.display = 'none';
+
+                var Asset8 = document.getElementById("Asset8");
+                var sideButton1 = document.getElementById("info-btn1");
+                Asset8.style.display = 'none';
+
+                var Asset9 = document.getElementById("Asset9");
+                var sideButton1 = document.getElementById("info-btn1");
+                Asset9.style.display = 'none';
+
+                var Asset10 = document.getElementById("Asset10");
+                var sideButton1 = document.getElementById("info-btn1");
+                Asset10.style.display = 'none';
+
+                var Asset11 = document.getElementById("Asset11");
+                Asset11.style.display = 'none';
+
+                var Asset12 = document.getElementById("Asset12");
+                Asset12.style.display = 'none';
+
+                var Asset13 = document.getElementById("Asset13");
+                Asset13.style.display = 'none';
+
+                var Asset14 = document.getElementById("Asset14");
+                Asset14.style.display = 'none';
+
+                var Asset15 = document.getElementById("Asset15");
+                Asset15.style.display = 'none';
+
+                var Asset15 = document.getElementById("Asset16");
+                Asset16.style.display = 'none';
+
+                document.getElementById('screen_1_form').noValidate = 'true';
+        }
+
+        function toggleInputDisplay(){
+            console.log('Display method executed')
+            var Asset1 = document.getElementById("Asset1");
+            Asset1.style.display = 'block';
+
+            var Asset2 = document.getElementById("Asset2");
+            Asset2.style.display = 'block';
+
+            var Asset3 = document.getElementById("Asset3");
+            Asset3.style.display = 'block';
+
+            var Asset4 = document.getElementById("Asset4");
+            Asset4.style.display = 'block';
+
+            var Asset5 = document.getElementById("Asset5");
+            Asset5.style.display = 'block';
+
+            var Asset6 = document.getElementById("Asset6");
+            Asset6.style.display = 'block';
+
+            var Asset7 = document.getElementById("Asset7");
+            Asset7.style.display = 'block';
+
+            var Asset8 = document.getElementById("Asset8");
+            Asset8.style.display = 'block';
+
+            var Asset9 = document.getElementById("Asset9");
+            Asset9.style.display = 'block';
+
+            var Asset10 = document.getElementById("Asset10");
+            Asset10.style.display = 'block';
+
+            var Asset11 = document.getElementById("Asset11");
+            Asset11.style.display = 'block';
+
+            var Asset12 = document.getElementById("Asset12");
+            Asset12.style.display = 'block';
+
+            var Asset13 = document.getElementById("Asset13");
+            Asset13.style.display = 'block';
+
+            var Asset14 = document.getElementById("Asset14");
+            Asset14.style.display = 'block';
+
+            var Asset15 = document.getElementById("Asset15");
+            Asset15.style.display = 'block';
+
+            var Asset15 = document.getElementById("Asset16");
+            Asset16.style.display = 'block';
+        }
+
+
+
+            function toggleText(){
+                var myText=document.getElementById("info");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText1(){
+                var myText=document.getElementById("info1");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText2(){
+                var myText=document.getElementById("info2");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText3(){
+                var myText=document.getElementById("info3");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText4(){
+                var myText=document.getElementById("info4");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText5(){
+                var myText=document.getElementById("info5");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText6(){
+                var myText=document.getElementById("info6");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText7(){
+                var myText=document.getElementById("info7");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText8(){
+                var myText=document.getElementById("info8");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText9(){
+                var myText=document.getElementById("info9");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText10(){
+                var myText=document.getElementById("info10");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText11(){
+                var myText=document.getElementById("info11");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText12(){
+                var myText=document.getElementById("info12");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText13(){
+                var myText=document.getElementById("info13");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText14(){
+                var myText=document.getElementById("info14");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+            function toggleText15(){
+                var myText=document.getElementById("info15");
+                var displaySetting=myText.style.display;
+
+                if(displaySetting == 'none'){
+                    myText.style.display='block';
+                }
+                else{
+                    myText.style.display='none';
+                }
+            }
+      </script>
+      <form method="POST" id="screen_1_form" class="form-horizontal" action="screening1" name="screening1">
+      <div class="alt-nav" style="width: 1263px;">
+        <div style="position: absolute;
+        height: 26px;
+        left: 11.39%;
+        right: 38.75%;
+        top: 32%;
+
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        /* or 117% */
+
+        font-feature-settings: 'pnum' on, 'lnum' on;
+
+        /* Typography/On Surface/High Emphasis */
+
+        color: rgba(39, 41, 54, 0.85);">
+            <a href="javascript:;" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+            DPIA Screening
+        </div>
+          <div style="position: absolute;
+        height: 26px;
+        left: 70.39%;
+        top: 40%;">
+        </div>
+          <div style="position: absolute;
+        height: 26px;
+        left: 90.00%;
+        top: 28%;">
+            <input type="reset" id="resetbuttonid" style="display:none;">
+            <a href="javascript:;">
+            <img
+            onclick="document.getElementById('resetbuttonid').click()"
+            src="static/assets/img/Reset.png"
+            alt="reset the form"
+            title="Click to reset the form.">
+            </a>
+        </div>
+          <div style="position: absolute;
+        height: 26px;
+        left: 62.00%;
+        top: 30%;">
+              <button type="submit" class="button" style="margin-left: 220px;"><span>Proceed </span></button>
+        </div>
+</div>
+    </div>
+        <!-- Form Name -->
+      <div class="rect-4" style="min-height:1600px; overflow-y:scroll; overflow-x:hidden;">
+        <div style="position:absolute; left:5%; padding-right: 5%;">
+            <div style="padding-top: 2%;">
+                <p class="small_font" style="color: black; text-transform: uppercase ;">Need help? hit the <img src="static/assets/img/icon-right-inside.png"> icon for guidance</p>
+            </div>
+            <div style="position:absolute; left:95%; padding-right: 5%;">
+                <a href="javascript:;" id="button_1"><img src="static/assets/img/icon-right-inside.png" onclick="toggleText()" alt="Info"></a>
+            </div>
+            <div class="form-group">
+                <div class="col">
+                    <label class="scr-h1" > 1. Will you require data processing for this scope of service? </label>
+                    <div class="col-sm-3" style="font-size: 16px; width: 750px; margin-left: -20px; margin-top: -10px;">
+                        <input type="radio" id="data_processing_project1" onchange="toggleInputDisplay()" name="data_processing_project" value="0" required>Yes
+                        <input type="radio" id="data_processing_project2" onchange="toggleInputHide()" name="data_processing_project" value="1" required>No
+                    </div>
+
+                    <div class="font info" id="info" style="padding-left:2%; padding-right: 2%; display:none">
+                        <i style="color:#2B0A3D;">Please mention if your organization will require to process data for mentioned scope of service.  Please select 'Yes' even if you have anonymised or psuedonymized the data. Processing includes the collection, recording, organizing, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction of personal data.</i>
+                         <hr>
+                    </div>
+                </div>
+                <div style="position:absolute; left:95%; padding-right: 5%; margin-top:-5px;" id="Asset16">
+                    <button type="button" onclick="toggleText1()" style="display: none;" id="info-btn1"></button>
+                    <a href="javascript:;" id="button_2"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn1').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                </div>
+            </div>
+
+
+              <div class="form-group" id="Asset1">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;">2. Please select the data which will be processed</label>
+                      <div class="col-sm-3" style="padding-top: 2%;">
+                          <select class="form-select-custom1" id="div_2" name="select_data_process" required>
+                              <option id="que_2_opt0"></option>
+                              <option id="que_2_opt1"  value="1">Personal Data</option>
+                              <option id="que_2_opt2"  value="2">Sensitive Personal Data</option>
+                              <option id="que_2_opt3"  value="3">Both Personal and Sensitive Personal Data</option>
+                              <option id="que_2_opt4"  value="4">Public Data</option>
+                          </select>
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%;  display:none" id="info1">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please mention the category of data which you will be processing. Categories: a) Personal Data: Name, Age, Contact Number, Address etc. b) Sensitive Personal Information: Ethnic Data, Health Data, Religious Data, Criminal Data, Racial Information etc. c) Public Data: Data available on trusted public websites.</i>
+                          <hr>
+                      </div>
+
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px; ">
+                    <button type="button" onclick="toggleText2()" style="display: none;" id="info-btn2"></button>
+                    <a href="javascript:;" id="button_3"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn2').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+              <div class="form-group" id="Asset2">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: 25px;"> 3. Who will be processing this data? </label>
+                      <div class="col-sm-3" style="padding-top: 2%;">
+                          <select  class="form-select-custom1" id="div_3" name="processing_data" required>
+                              <option id="que_3_opt0"></option>
+                              <option id="que_3_opt1"  value="1">Self Processing / Data Controller </option>
+                              <option id="que_3_opt2" value="2">Data Processor</option>
+                          </select>
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info2">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please mention if Data Controller Organization will be doing the data processing itself or will they be hiring external firm to do the processing.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText3()" style="display: none;" id="info-btn3"></button>
+                    <a href="javascript:;" id="button_5"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn3').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset3">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: 25px;"> 4. Will data processing involve evaluating, scoring, profiling or predicting? </label>
+                        <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                            <input type="radio" name="data_processing_involve" id="div_4" value="0" required>Yes
+                            <input type="radio" name="data_processing_involve" id="div_5" value="1" required>No
+	                    </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info3">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please especially check from aspects concerning the data subject’s economic situation, health, personal preferences, interests, reliability, behaviour, location or movements.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText4()" style="display: none;" id="info-btn4"></button>
+                      <a href="javascript:;" id="button_6"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn4').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset4">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 5. Will data processing involve automated decision making? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="automated_decision_making" id="div_6" value="0" required>Yes
+                          <input type="radio" name="automated_decision_making" id="div_7" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info4">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if you will be doing any processing which will have zero human involvement. Examples: KYC process collects the data from the system and evaluates the risk score on its own if certain criteria are met. </i>
+                           <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText5()" style="display: none;" id="info-btn5"></button>
+                      <a href="javascript:;" id="button_7"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn5').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset5">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 6. Will data processing involve systematic monitoring? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="systematic_monitoring" id="div_8" value="0" required>Yes
+                          <input type="radio" name="systematic_monitoring" id="div_9" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info5">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if processing is used to observe, monitor or control data subjects. Example: CCTV camera in a public area. This will collect data when the data subject is not aware that their data is being collected.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText6()" style="display: none;" id="info-btn6"></button>
+                      <a href="javascript:;" id="button_8"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn6').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset6">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 7. Will you process data on a large scale? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="process_data_on_large_scale" id="div_10" value="0" required>Yes
+                          <input type="radio" name="process_data_on_large_scale" id="div_11" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info6">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please consider: a) The number of data subjects involved in the process b) The volume and range of personal data involved c) How long will the processing activity be in place for d) The geographical extent of the processing activity.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText7()" style="display: none;" id="info-btn7"></button>
+                      <a href="javascript:;" id="button_10"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn7').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset7">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 8. Will data processing involve re-using old dataset(s) for a new, completely different purpose from which it was first intended? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_reusing_old_dataset" id="div_13" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_reusing_old_dataset" id="div_14" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info7">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if processing is done for same purpose. Few examples where re-using datasets is done for a different purpose: a) Sending job mailers to unsuccessful applicants in an exam b) Credit Card details used to verify eligibility and sending loan offers. c) Combining two datasets for a new purpose.</i>
+                          <hr>
+                      </div>
+
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText8()" style="display: none;" id="info-btn8"></button>
+                      <a href="javascript:;" id="button_11"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn8').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset8">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top:-15px;"> 9. Will data processing involve data which primarily concerns vulnerable data subjects? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="vulnerable_data_subjects" id="div_15" value="0" required>Yes
+                          <input type="radio" name="vulnerable_data_subjects" id="div_16" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info8">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if data is stored for any vulnerable groups of people. Examples of Vulnerable groups: a) Elderly People b) Asylum Seekers c) Patients d) Children under age of 12 e) Disputed matters like data of an employee who has been fired on biased grounds.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText9()" style="display: none;" id="info-btn9"></button>
+                      <a href="javascript:;" id="button_12"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn9').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset9">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top:-5px;"> 10. Will data processing involve applying novel/innovative technologies? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_innovative_technologies" id="div_17" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_innovative_technologies" id="div_18" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info9">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if data processing involves innovative technology like facial recognition software, biometric technology or other novel ways of collecting personal data.</i>
+                          <hr>
+                      </div>
+                  </div>
+                    <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                        <button type="button" onclick="toggleText10()" style="display: none;" id="info-btn10"></button>
+                        <a href="javascript:;" id="button_13"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn10').click()" alt="Info"></a>
+                        <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                    </div>
+              </div>
+
+
+              <div class="form-group" id="Asset10">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 11. Will data processing involve sharing data outside the European Union? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_sharing_data_outside_european_union" id="div_19" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_sharing_data_outside_european_union" id="div_20" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info10">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if you will be sharing data  which may include third party services based outside the EU. For example, if you are using a system run by a Russian company it is possible that the personal data you enter into the system is held on their Russian based servers.</i>
+                          <hr>
+                      </div>
+                  </div>
+                   <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText11()" style="display: none;" id="info-btn11"></button>
+                      <a href="javascript:;" id="button_14"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn11').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                   </div>
+              </div>
+
+
+              <div class="form-group" id="Asset11">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px; margin-top: -10px;"> 12. Will data processing involve a new collection of personal information? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_collection_personal_information" id="div_21" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_collection_personal_information" id="div_22" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info11">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if you will be collecting new information. For example, collecting information about location of data subjects or collecting the new mailing list.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText12()" style="display: none;" id="info-btn12"></button>
+                      <a href="javascript:;" id="button_15"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn12').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+
+              <div class="form-group" id="Asset12">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -15px;"> 13. Will data processing involve using a third-party contractor when processing personal information? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_third_party" id="div_23" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_third_party" id="div_24" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info12">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">Please check if you will share this data with a third party. For example, outsourcing HR functions or storing information in the cloud. In case of an external Data Processor, please check if there is any involvement of any third party vendor like cloud service provider or data storage provider.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText13()" style="display: none;" id="info-btn13"></button>
+                      <a href="javascript:;" id="button_16"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn13').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset13">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 14. Will data processing involve a change in the way personal information is stored or secured? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_processing_involve_change_information_is_stored_secured" id="div_25" value="0" required>Yes
+                          <input type="radio" name="data_processing_involve_change_information_is_stored_secured" id="div_26" value="1" required>No
+                      </div>
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info13">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">If this is not a new collection process, then please check if the new data is stored in similar way as that of the old data. For example, there is no change of transferring the storage of personal information into the cloud, or the implementation of a policy that effects a change to the way personal information is stored or secured.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText14()" style="display: none;" id="info-btn14"></button>
+                      <a href="javascript:;" id="button_17"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn14').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+              <div class="form-group" id="Asset14">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -15px;"> 15. Will data processing involve a change to the way that personal data is currently collected? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                          <input type="radio" name="data_procc_involve_chg_personal_data_currently_collected" id="div_27" value="0" required>Yes
+                          <input type="radio" name="data_procc_involve_chg_personal_data_currently_collected" id="div_28" value="1" required>No
+                      </div>
+
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info14">
+                          <i style="color:#2B0A3D;" class="dpia_screening_guidance">If this is not a new collection process, then please check if the new data is collected in the same way as that of old data. For example, collection is done using paper forms and has not been upgraded to online forms.</i>
+                          <hr>
+                      </div>
+                  </div>
+                  <div style="position:absolute; left:95%; padding-right: 5%; margin-top:5px;">
+                    <button type="button" onclick="toggleText15()" style="display: none;" id="info-btn15"></button>
+                      <a href="javascript:;"><img src="static/assets/img/icon-right-inside.png" onclick="document.getElementById('info-btn15').click()" alt="Info"></a>
+                    <!-- <a href="#"><img src="static/assets/img/icon-right-outside.png"></a> -->
+                  </div>
+              </div>
+
+
+
+              <div class="form-group" id="Asset15">
+                  <div class="col">
+                      <label class="scr-h1" style="margin-top: -5px;"> 16. Have you conducted DPIA for any similar scope of service? </label>
+                      <div class="col-sm-3" style="margin-left: -20px; margin-top: -10px;">
+                           <input type="radio" name="conducted_DPIA_for_similar_scope_of_service" id="div_29" value="0" required>Yes
+                          <input type="radio" name="conducted_DPIA_for_similar_scope_of_service" id="div_30" value="1" required>No
+                      </div>
+                      <div class="font info" style="padding-top:2%; padding-right: 2%; display:none" id="info15">
+                          <i style="color:#2B0A3D" class="dpia_screening_guidance">Please mention if you have conducted DPIA for any service which has similar nature, scope, context or purpose.</i>
+                          <hr>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </form>
+      </div>
+      </div>
+      <img class="bar-png3" src="static/assets/img/bar.png"/>
+  </main>
+        <!-- End #main -->
+{% endblock %}
+
+</body>
+
+</html>

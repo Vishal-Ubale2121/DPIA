@@ -1,0 +1,67 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<body class="body-class" style="overflow-y: hidden; overflow-x: hidden;">
+    <!-- Slideshow container -->
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-pause="false">
+  <div class="carousel-inner" style="width: 100%">
+    <div class="carousel-item active" style="width: 100%">
+      <img class="d-block w-100" src="static/assets/img/istock4.jpg" alt="First slide">
+        <div class="col-text-1" style="bottom: 45%; text-shadow: 2px 2px 10px black; color: white;">
+            <span style="font-size: 32px; font-family: 'ubuntu';">
+                GDPR Compliance
+            </span><br>
+            <span style="font-size: 12px; font-family: 'ubuntu';">Assessment results provided in GDPR format.
+            </span>
+      </div>
+    </div>
+    <div class="carousel-item" style="width: 100%">
+      <img class="d-block w-100" src="static/assets/img/istock8.jpg" alt="Second slide">
+        <div class="col-text-2" style="bottom: 27%; text-shadow: 2px 2px 10px black; color: white;">
+            <span style="font-size: 32px; font-family: 'ubuntu';">
+                Simplified Assessment
+            </span><br>
+            <span style="font-size: 12px; font-family: 'ubuntu';">Designed to include all important data security questions in simplified way.<br>
+            </span>
+      </div>
+    </div>
+    <div class="carousel-item" style="width: 100%">
+      <img class="d-block w-100" src="static/assets/img/istock9.jpg" alt="Third slide">
+        <div class="col-text-3" style="bottom: 50%; text-shadow: 2px 2px 10px black; color: white;">
+            <span style="font-size: 32px; font-family: 'ubuntu';">
+                Risk Summary Report
+            </span><br>
+            <span style="font-size: 12px; font-family: 'ubuntu';">Report generated after detailed analysis of risks and mitigation measures.<br>
+            </span>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- The dots/circles -->
+<div class="logout-box-col">
+    <div class="container" style=" margin-right: 150px;">
+         <p class="status-text" style="margin-left: 50px">Log out !</p>
+        <div class="status-msg">
+        </div>
+        <a href="{% url 'login' %}"><button class="logout-button1">Login again</button></a>
+        <div>
+            <img class="status-png" src="static/assets/img/logout.png"/>
+        </div>
+      </div>
+</div >
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+Django
+bootstrap4
+beautifulsoup4==4.8.2
+django-crispy-forms
+numpy
+pandas
+matplotlib
+mysqlclient
+whitenoise==6.0.0
+fpdf
+reportlab
+PyPDF2
+openpyxl

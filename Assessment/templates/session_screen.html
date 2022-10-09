@@ -1,0 +1,114 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<link href="static/assets/css/style-figma.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Screen</title>
+</head>
+<div class="alt-nav" style="width: 1280px;">
+    <div style="position: absolute;
+    height: 26px;
+    left: 4.5%;
+    right: 38.75%;
+    top: 40%;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+<!--        <a href="javascript:;"><button onclick="noSession()" class="button-assessment">Start DPIA Assessment</button></a>-->
+        DPIA Assessments
+    </div>
+</div>
+<script type="text/javascript">
+
+    window.onload = function(){
+        console.log('inside ready function')
+    };
+
+    var num_range = {{db_instance|safe}}
+    console.log('Num Range:'+num_range)
+
+    var session_db = {{ session_dict|safe }}
+    var session_db_num = Object.keys(session_db)
+    console.log(session_db);
+
+    var x = {{db_data|safe}}
+    console.log(x)
+
+    function clickDB(){
+        var data1 = document.getElementById('objects').value
+        console.log('Value is: '+ data1)
+
+    }
+
+    function noSession(){
+         var num = 0;
+         console.log('enter in no session')
+         window.location.href = "{% url 'no_session' %}" + "?search="+num
+    }
+
+    function setGetParameter(){
+    searchWord = document.getElementById('db_value').value;
+    console.log("Word is: "+searchWord)
+    window.location.href = "{% url 'no_session' %}" + "?search="+searchWord;
+    }
+
+    var d = {{ db_instance|safe }}
+    console.log("DB instances are "+ d)
+
+    function getNum(i){
+        window.location.href = "{% url 'no_session' %}" + "?search="+i
+        console.log('div clicked ' + i)
+    }
+
+
+
+</script>
+
+<style>
+.grow:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.11);
+  transition: .6s ease;
+}
+</style>
+
+<body class="body-class">
+    <div style="margin-top: 100px; margin-left: 100px;">
+        {% for i in session_dict.values %}
+            <a href="javascript:;"><div class="session_div_out grow"  onclick="getNum('{{i.title}}')">
+                <div class="top-label-div">
+                    <p class="session_steps">{{ i.title }}</p>
+                    <p class="session-date">Date:&nbsp;<label style="color: #919198;"> {{ i.date }} </label></p>
+                    <p class="session-date">DPIA Status:&nbsp;<label style="color: #919198;"> {{ i.status }} </label></p>
+                    <p class="session-date">Project Name:&nbsp;<label style="color: #919198;"> {{ i.role }} </label></p>
+                </div>
+            </div></a>
+        {% endfor %}
+
+        <a onclick="noSession()" href="javascript:;">
+            <div class="session_div_out grow">
+                <img class="session-png" src="static/assets/img/session_create.png"/>
+                <p class="session-text">ADD NEW ASSESSMENT +</p>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
+<div>
+    <img class="bar-png" src="static/assets/img/bar.png"/>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<div style="height: 80px">
+
+</div>
+<div class="container text-white rounded-top" style="background-color: rgba(245, 245, 248, 0.7);">
+      <main id="main">
+        <center><h3 class="text-black verdana" style="font-size:25px"><strong>HEAT MAP</strong></h3></center>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">SCORE</th>
+                    <th scope="col">PROBABILITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"></th>
+                    <th>Rare</th>
+                    <th>Unlikely</th>
+                    <th>Possibly</th>
+                    <th>Likely</th>
+                    <th>Almost Certain</th>
+                </tr>
+                <tr>
+                  <th scope="row">Catastrophic</th>
+                  <td class="bg-warning"></td>
+                  <td class="bg-warning"></td>
+                  <td class="bg-danger"></td>
+                    <td class="bg-danger"></td>
+                    <td class="bg-danger"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Major</th>
+                  <td class="bg-success"></td>
+                  <td class="bg-warning"></td>
+                    <td class="bg-warning"></td>
+                    <td class="bg-danger"></td>
+                    <td class="bg-danger"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Moderate</th>
+                  <td class="bg-success"></td>
+                  <td class="bg-warning"></td>
+                    <td class="bg-warning"></td>
+                    <td class="bg-warning"></td>
+                    <td class="bg-warning"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Minor</th>
+                  <td class="bg-success"></td>
+                  <td class="bg-success"></td>
+                    <td class="bg-success"></td>
+                    <td class="bg-success"></td>
+                    <td class="bg-warning"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Negligible</th>
+                  <td class="bg-success"></td>
+                  <td class="bg-success"></td>
+                    <td class="bg-success"></td>
+                    <td class="bg-success"></td>
+                    <td class="bg-success"></td>
+                </tr>
+              </tbody>
+          </table>
+          <div style="height: 10px">
+
+          </div>
+        </main>
+<!-- End #main -->
+    </div >
+{% endblock %}
+</body>
+
+</html>

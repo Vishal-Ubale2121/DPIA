@@ -1,0 +1,69 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<div class="alt-nav">
+    <div style="position: absolute;
+    height: 26px;
+    left: 11.39%;
+    right: 38.75%;
+    top: 32%;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    /* or 117% */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Typography/On Surface/High Emphasis */
+
+    color: rgba(39, 41, 54, 0.85);">
+        <a href="#" onclick="history.back()"><img src="static/assets/img/Icon.png"/></a>
+        DPIA Screening Result
+    </div>
+</div>
+<body class="body-class">
+<div class="result-box">
+    {% if dpia_status %}
+            {% if dpia_status == 'Recommended' %}
+                <p class="result-text-2">DPIA is Recommended</p>
+                <a href="{% url 'screening' %}"><button class="result-button1">Retake Screening</button></a>
+                <a href="{% url 'dpia_screening' %}"><button class="result-button2">Proceed to Assessment</button></a>
+                <div>
+                    <img class="result-png" src="static/assets/img/result_recommanded.png"/>
+                </div>
+            {% elif dpia_status == 'Mandatory' %}
+                <p class="result-text">DPIA is Mandatory</p>
+                <a href="{% url 'screening' %}"><button class="result-button1">Retake Screening</button></a>
+                <a href="{% url 'dpia_screening' %}"><button class="result-button2">Proceed to Assessment</button></a>
+                <div>
+                    <img class="result-png-1" src="static/assets/img/result_mandatory.png"/>
+                </div>
+            {% elif dpia_status == 'Not Required' %}
+                <p class="result-text">DPIA is not required</p>
+                <a href="{% url 'screening' %}"><button class="result-button1">Retake Screening</button></a>
+                <a href="{% url 'index' %}"><button class="result-button2">Back to Home</button></a>
+                <div>
+                    <img class="result-png" src="static/assets/img/result_not_recommended.png"/>
+                </div>
+            {% else %}
+                <p class="result-text">DPIA is not mandatory</p>
+                <a href="{% url 'screening' %}"><button class="result-button1">Retake Screening</button></a>
+                <a href="{% url 'index' %}"><button class="result-button2">Back to Home</button></a>
+                <div>
+                    <img class="result-png" src="static/assets/img/result_png1.png"/>
+                </div>
+            {% endif %}
+        {% endif %}
+</div >
+<img class="bar-png" src="static/assets/img/bar.png"/>
+{% endblock %}
+</body>
+
+</html>

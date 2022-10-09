@@ -1,0 +1,47 @@
+{% extends 'base-figma.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+    function selection(){
+        window.location.href = "{% url 'dpia_screening' %}"
+    }
+
+    function approved_selection(){
+        var value = 1
+        window.location.href = "{% url 'risk_summary' %}" + "?search="+value;
+    }
+</script>
+
+<body class="body-class">
+<div class="status-box">
+        {% if status == '1' %}
+                <p class="status-text" style="margin-left: 50px">Approved !</p>
+                <div class="status-msg">
+                    <p>Your final GDPR Report is approved & is ready for download</p>
+                </div>
+                <button class="status-button1" onclick="approved_selection()">Back to Assessments</button>
+<!--                <a href="media/final_pdf/result.pdf" download><button class="status-button2">Download PDF Report</button></a>-->
+                    <a href="media/final_pdf/result.pdf" download><button class="status-button2">Download PDF Report</button></a>
+                <div>
+                    <img class="status-png" src="static/assets/img/approve.png"/>
+                </div>
+        {% else %}
+                <p class="status-text" style="margin-left: 50px">Sorry !</p>
+                <div class="status-msg">
+                    <p>Your final GDPR Report is rejected. We request you to take the assessment again.</p>
+                </div>
+                <button class="status-button3" onclick="selection()">Back to Assessments</button>
+                <div>
+                    <img class="status-png" src="static/assets/img/reject.png"/>
+                </div>
+        {% endif %}
+</div >
+<img class="bar-png" src="static/assets/img/bar.png"/>
+{% endblock %}
+</body>
+
+</html>
